@@ -1,0 +1,8 @@
+twitter keys:
+key - 	r5v3rSRP3D83IOlygOQYTe6aR
+secret - t4mzFfRviMgcV5dvDnoFVlEQpqBXx9QvHqWSQzTfPBmlqzh7ND
+
+token  - 937839878766817281-PiROymOPLOMQaJae3RmRkI2FTEyVwqR
+secret - 2CzINSxCWY7VYNbfSBKxd9CwRvugiKSCz1UOKqncUwHUW
+
+owner id - 937839878766817281
