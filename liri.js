@@ -59,6 +59,13 @@ var myTweets = function() {
 	});
 }
 
+//spotify function
+var getSpotify = function() {
+	
+}
+
 //run the app
 command(userCommand, userInput);
+
+
 
