@@ -30,7 +30,7 @@ var command = function(action) {
 		break;
 
 		default:
-			console.log("Please enter a valid command.\nChoices: my-tweets, spotify-this-song, movie-this, do-what-it-says.");
+			console.log("Please enter a valid command.\nChoices: my-tweets, spotify-this-songName, movie-this, do-what-it-says.");
 			break;
 	};
 };
@@ -59,10 +59,35 @@ var myTweets = function() {
 	});
 }
 
-//spotify function
-var getSpotify = function() {
-	
-}
+//spotify function - artist, songName, link, album
+var getSpotify = function(songName) {
+	if (songName === undefined) {
+		songName = "the sign";
+	};
+
+	spotify.search({type: "track", query: songName}, function(err, data) {
+		if (err) {
+			console.log(err);
+			return;
+		}
+
+		var songs = data.tracks.items;
+    	var data = []; 
+
+    	for (var i = 0; i < songs.length; i++) {
+      		data.push({
+		        'artist(s)': songs[i].artists,
+		        'song name: ': songs[i].name,
+		        'preview song: ': songs[i].preview_url,
+		        'album: ': songs[i].album.name,
+      		});
+    	}
+    	console.log(data);
+
+	});
+};
+
+
 
 //run the app
 command(userCommand, userInput);
