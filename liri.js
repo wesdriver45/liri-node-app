@@ -54,7 +54,8 @@ var myTweets = function() {
 					
 				})
 			}
-			console.log(data);		
+			console.log(data);
+			console.log("key loaded");		
 		}
 	});
 }
@@ -65,6 +66,7 @@ var getSpotify = function(songName) {
 		songName = "the sign";
 	};
 
+	//spotify call
 	spotify.search({type: "track", query: songName}, function(err, data) {
 		if (err) {
 			console.log(err);
@@ -74,6 +76,7 @@ var getSpotify = function(songName) {
 		var songs = data.tracks.items;
     	var data = []; 
 
+    	//get info for song
     	for (var i = 0; i < songs.length; i++) {
       		data.push({
 		        'artist(s)': songs[i].artists,
@@ -86,6 +89,53 @@ var getSpotify = function(songName) {
 
 	});
 };
+
+//movie function
+var getMovie = function(movieName) {
+	if (movieName === undefined) {
+		movieName = "Mr. Nobody";
+	}
+
+	// omdb call
+	var queryURL = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
+		
+	request(queryURL, function(error, response, body) {
+		if (!error && response.statusCode === 200) {
+			var data = [];
+			var jsonData = JSON.parse(body);
+
+			//push movie info into data []
+			data.push({
+				"Title: ": jsonData.Title,
+				"Year: ": jsonData.Year,
+				"Rated: ": jsonData.Rated,
+				"IMDB Rating: ": jsonData.imdbRating,
+				"Rotten Tomatoes Rating: ": jsonData.tomatoRating,
+				"Country: ": jsonData.Country,
+				"Language: ": jsonData.Language,
+				"Plot: ": jsonData.Plot,
+				"Actors: ": jsonData.Actors,
+			});
+			console.log(data);
+		}
+	});
+}
+
+//read for dwis
+var doThis = function() {
+	fs.readFile("random.txt", "utf8", function(error, data) {
+		if (error) {
+			console.log(error);
+			console.log(data);
+			var dataArr = data.split(",");
+			console.log(dataArr);
+		}
+	});
+}
+
+//append to log.txt
+
+
 
 
 
